@@ -26,8 +26,8 @@ COPY --from=builder /go/jsonnet/jsonnetfmt /usr/local/bin/
 COPY --from=builder /go/bin/jb /usr/local/bin/
 COPY --from=builder /go/bin/mixtool /usr/local/bin/
 
-WORKDIR /dashboards
-COPY --from=builder /go/vendor vendor
-ENV JSONNET_PATH=/dashboards/vendor
+COPY --from=builder /go/vendor /jsonnet/vendor
+ENV JSONNET_PATH=/jsonnet/vendor
 
+WORKDIR /mixin
 ENTRYPOINT [ "/bin/sh", "-c" ]
