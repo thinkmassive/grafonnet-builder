@@ -21,12 +21,13 @@ FROM alpine:3.17
 
 RUN apk add --no-cache libstdc++=12.2.1_git20220924-r4 ca-certificates
 
-WORKDIR /dashboards
-
-COPY --from=builder /go/vendor vendor
 COPY --from=builder /go/jsonnet/jsonnet /usr/local/bin/
+COPY --from=builder /go/jsonnet/jsonnetfmt /usr/local/bin/
 COPY --from=builder /go/bin/jb /usr/local/bin/
 COPY --from=builder /go/bin/mixtool /usr/local/bin/
 
+WORKDIR /dashboards
+COPY --from=builder /go/vendor vendor
 ENV JSONNET_PATH=/dashboards/vendor
+
 CMD [ "mixtool" ]
