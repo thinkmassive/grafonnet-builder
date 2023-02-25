@@ -30,4 +30,4 @@ WORKDIR /dashboards
 COPY --from=builder /go/vendor vendor
 ENV JSONNET_PATH=/dashboards/vendor
 
-ENTRYPOINT [ "/bin/sh" ]
+ENTRYPOINT [ "/bin/sh", "-c" ]
