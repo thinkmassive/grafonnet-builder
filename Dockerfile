@@ -29,4 +29,4 @@ COPY --from=builder /go/bin/jb /usr/local/bin/
 COPY --from=builder /go/bin/mixtool /usr/local/bin/
 
 ENV JSONNET_PATH=/dashboards/vendor
-CMD [ "mixtool" ]
+ENTRYPOINT [ "/bin/sh" ]
