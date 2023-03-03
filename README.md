@@ -15,23 +15,21 @@ for convenience, although using the GHCR images is recommended.
 
 Any of the bundled tools can be run the same as if they were installed natively:
 ```shell
-IMG=thinkmassive/mixin-builder:main
-
 # mixtool
-docker run -v $(pwd):/mixin mixtool $IMG
+alias mixtool='docker run --rm -v $(pwd):/mixin --entrypoint=mixtool ghcr.io.thinkmassive/mixin-builder:main'
 
 # jsonnet & jsonnetfmt
-docker run -v $(pwd):/mixin jsonnet $IMG
-docker run -v $(pwd):/mixin jsonnetfmt $IMG
+alias jsonnet='docker run --rm -v $(pwd):/mixin --entrypoint=jsonnet ghcr.io.thinkmassive/mixin-builder:main'
+alias jsonnetfmt='docker run --rm -v $(pwd):/mixin --entrypoint=jsonnetfmt ghcr.io.thinkmassive/mixin-builder:main'
 
 # jb
-docker run -v $(pwd):/mixin jb $IMG"
+alias jb='docker run --rm -v $(pwd):/mixin --entrypoint=jb ghcr.io.thinkmassive/mixin-builder:main'
 ```
 
 ## Building the image
 
 ```shell
-IMG_REPO=thinkmassive/mixin-builder
+IMG_REPO=mixin-builder
 IMG_TAG=dev
 
 docker build -t $IMG_REPO:$IMG_TAG .
