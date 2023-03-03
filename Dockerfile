@@ -19,7 +19,7 @@ RUN go install github.com/monitoring-mixins/mixtool/cmd/mixtool@fb5c2176a10f45ba
 
 FROM alpine:3.17
 
-RUN apk add --no-cache libstdc++=12.2.1_git20220924-r4 ca-certificates
+RUN apk add --no-cache libstdc++=12.2.1_git20220924-r4 ca-certificates git
 
 COPY --from=builder /go/jsonnet/jsonnet /usr/local/bin/
 COPY --from=builder /go/jsonnet/jsonnetfmt /usr/local/bin/
